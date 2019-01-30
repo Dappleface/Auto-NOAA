@@ -1,13 +1,8 @@
-from skyfield.api import load
+from skyfield.api import Topos
 
-planets = load('de421.bsp')
-earth, mars = planets['earth'], planets['mars']
+boston = earth + Topos('42.3583 N', '71.0636 W')
+astrometric = boston.at(t).observe(mars)
+alt, az, d = astrometric.apparent().altaz()
 
-ts = load.timescale()
-t = ts.now()
-position = earth.at(t).observe(mars)
-ra, dec, distance = position.radec()
-
-print(ra)
-print(dec)
-print(distance)
+print(alt)
+print(az)
