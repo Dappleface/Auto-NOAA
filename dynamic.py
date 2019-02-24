@@ -1,4 +1,4 @@
-from skyfield.api import *
+from skyfield.api import load
 
 planets = load('de421.bsp')
 earth, mars = planets['earth'], planets['mars']
